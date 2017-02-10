@@ -2,7 +2,6 @@
 
 '''
     wiztv Add-on
-    Copyright (C) 2016 Origin
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -19,10 +18,11 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	
-    This addon could not of became what it is without the help and generosity of everyone involved.
-    Not all of the coding is my original work but i have tried my best to utilise and learn from others.
+    Most of the coding is not my original work, i am trying to learn, mainly by trial and error, adapting and changing other devs 
+    code to my own requirements. 
+    This addon was based entirely on Sanctuary by Origin, which contains code from numerous other developers.
     If i have used code that you wrote i can only apologise for not thanking you personally and ensure you no offence was meant.
-    Just sometimes i find it best not to rewrite what works well, mostly to a higher standard that my current understanding
+    
 '''
 import xbmcplugin, xbmc, xbmcaddon, urllib, xbmcgui, traceback, requests, re, os
 from lib import process
