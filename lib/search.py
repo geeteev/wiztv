@@ -292,23 +292,12 @@ def Live_TV(Search_name):
     if Search_name.lower() == 'w':
         Search_name = 'Watch'
     dp.create('Checking for streams - ' + Search_name)
-    Oblivion_list = ['FreeSports.xml','FreeTesting.xml','Server1.m3u','Server2.m3u','Kid.xml']
-    Joker_live_list = ['http://164.132.106.213/data/sports/sports.txt','http://164.132.106.213/data/livetv/worldtv.xml','http://164.132.106.213/data/livetv/news.xml',
-	'http://164.132.106.213/data/livetv/iptv.xml']
-    Raider_live_list = ['http://tombraiderbuilds.co.uk/addon/beinsportslive/beinsportslive.txt','http://tombraiderbuilds.co.uk/addon/btsportslive/btsportslive.txt',
-    'http://tombraiderbuilds.co.uk/addon/sportschannels/','http://tombraiderbuilds.co.uk/addon/ukentertainment/filmon.txt',
-    'http://tombraiderbuilds.co.uk/addon/ukentertainment/filmonmovies.txt','http://tombraiderbuilds.co.uk/addon/ukentertainment/freeworldiptv.txt',
-    'http://tombraiderbuilds.co.uk/addon/ukentertainment/freeworldiptv.txt','http://tombraiderbuilds.co.uk/addon/ukentertainment/usfreeview.txt',
-    'http://tombraiderbuilds.co.uk/addon/newschannels/newschannels.txt','http://tombraiderbuilds.co.uk/addon/skysportslive/skysportslive.txt']
-    Lily_List = ['http://kodeeresurrection.com/LILYSPORTStxts/livetv.txt','http://kodeeresurrection.com/LILYSPORTStxts/musictv.txt.txt','http://kodeeresurrection.com/LILYSPORTStxts/sport.txt']
-    BAMF_List = ['http://genietvcunts.co.uk/bamffff/bamf.iptv.m3u','http://genietvcunts.co.uk/bamffff/Server2.m3u',
-    'http://genietvcunts.co.uk/bamffff/BAMF.Sport.m3u','http://genietvcunts.co.uk/bamffff/BAMFSKYMOVIES.m3u']
-    Supremecy_List = ['https://simplekore.com/wp-content/uploads/file-manager/steboy11/LiveTV/live.txt',
-    'https://simplekore.com/wp-content/uploads/file-manager/steboy11/Kids%20Tv/Kids%20Tv.txt',
-    'https://simplekore.com/wp-content/uploads/file-manager/steboy11/Sky%20Movies/Sky%20Movies.txt',
-    'https://simplekore.com/wp-content/uploads/file-manager/steboy11/Sport/sport.txt']
-    Ultra_List = ['http://ultratv.net16.net/iptvserver/ukiptv1.xml','http://ultratv.net16.net/iptvserver/usaiptv1.xml',
-    'http://ultratv.net16.net/iptvserver/canadaiptv1.xml','http://ultratv.net16.net/iptvserver/indiaiptv1.xml']
+#    Oblivion_list = ['FreeSports.xml','FreeTesting.xml','Server1.m3u','Server2.m3u','Kid.xml']
+
+    WIZtv_List = ['https://pastebin.com/raw/vQZZFeES','https://pastebin.com/raw/fKRCX7Gz',]
+
+#    Ultra_List = ['http://ultratv.net16.net/iptvserver/ukiptv1.xml','http://ultratv.net16.net/iptvserver/usaiptv1.xml',
+#    'http://ultratv.net16.net/iptvserver/canadaiptv1.xml','http://ultratv.net16.net/iptvserver/indiaiptv1.xml']
     HTML = open(freeview_py).read()
     block = re.compile('def CATEGORIES(.+?)#4Music',re.DOTALL).findall(HTML)
     match = re.compile("addLink\('(.+?)','(.+?)',(.+?),(.+?)\)").findall(str(block))
@@ -336,9 +325,9 @@ def Live_TV(Search_name):
         for item in Supremecy_List:
             dp.update(70,'',"Checking Supremacy",'Please Wait')
             Thread(target=Raider_Live_Loop(Search_name,item))
-    if ADDON.getSetting('BAMF_Search')=='true':
-        for item in BAMF_List:
-            dp.update(80,'',"Checking BAMF",'Please Wait')
+    if ADDON.getSetting('WIZtv_Search')=='true':
+        for item in WIZtv_List:
+            dp.update(80,'',"Checking WIZtv",'Please Wait')
             Thread(target=Raider_Live_Loop(Search_name,item))	
     if ADDON.getSetting('Ultra_Search')=='true':
         for item in Ultra_List:
@@ -366,11 +355,11 @@ def Raider_Live_Loop(Search_name,url):
     elif 'kodeeresurrection' in url:
         ADD_NAME = '[COLORpurple]Lily Sport\'s[/COLOR]'
     elif 'cunts' in url:
-        ADD_NAME = '[COLORwhite]BAMF[/COLOR]'
+        ADD_NAME = '[COLORwhite]WIZtv[/COLOR]'
     elif 'ilent' in url:
         ADD_NAME = '[COLORsteelblue]Silent Hunter[/COLOR]'
     else:
-        ADD_NAME = '[COLORwhite]Ultra[/COLOR]'
+        ADD_NAME = '[COLORwhite]WizTV[/COLOR]'
     HTML = process.OPEN_URL(url)
     match2 = re.compile('<title>(.+?)</title>.+?<link>(.+?)</link>.+?<thumbnail>(.+?)</thumbnail>.+?<fanart>(.+?)</fanart>',re.DOTALL).findall(HTML)
     for name,link,image,fanart in match2:

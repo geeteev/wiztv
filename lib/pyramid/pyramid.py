@@ -113,8 +113,9 @@ def SKindex_Supremacy():
     getData('https://simplekore.com/wp-content/uploads/file-manager/steboy11/home.txt','')
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
-def SKindex_BAMF():
-    getData('http://genietvcunts.co.uk/bamffff/BAMF.xml','')
+#main index url
+def SKindex_WIZtv():
+    getData('https://pastebin.com/raw/efA9vPNF','')
     xbmcplugin.endOfDirectory(int(sys.argv[1]))
 
 def SKindex_Quicksilver():
