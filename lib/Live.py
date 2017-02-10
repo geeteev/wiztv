@@ -3,7 +3,7 @@ import process, re, requests, threading, xbmc, xbmcgui, os
 Stream_file = xbmc.translatePath('special://home/userdata/addon_data/plugin.video.wiztv/streams.txt')
 Addon_data = xbmc.translatePath('special://home/userdata/addon_data/plugin.video.wiztv/')
 def Live_Menu():
-    process.Menu('By Country','',20,'','','','')
+    process.Menu('Shadownet','',20,'','','','')
     process.Menu('M3u8 Lists','',23,'','','','')
 
 
@@ -43,7 +43,7 @@ def Ultra():
 	headers = {"User-Agent": "Mozilla/5.0"}
 	process.Menu('[COLORwhite]Search All Lists[/COLOR]','',25,'','','','')
 	process.Menu('________________________________________________________','',25,'','','','')
-	process.Menu('[COLORwhite]Check for response off streams[/COLOR]','',26,'','','','')
+	process.Menu('[COLORwhite]Check for stream response[/COLOR]','',26,'','','','')
 	process.Menu('[COLORred]AVERAGE RUN TIME FOR ABOVE IS 30 MINUTES!!!![/COLOR]','',23,'','','','')
 	process.Menu('[COLORred]This will check every single stream for a response[/COLOR]','',23,'','','','')
 	process.Menu('[COLORred]It will take a while but should only need doing every couple of days[/COLOR]','',23,'','','','')
@@ -69,7 +69,7 @@ def Get_Ultra_Channel(url):
 			name = name[1:]
 		if name[-1] == ' ':
 			name = name[:-1]
-		url = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&amp;url='+url.replace('[','').replace(']','')+';name=wiztv'
+		url = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&amp;url='+url.replace('[','').replace(']','')+';name=Wiztv'
 		process.Play(name,url,906,'','','','')
 
 
@@ -108,7 +108,7 @@ def search_next(name):
 				name = name[1:]
 			if name[-1] == ' ':
 				name = name[:-1]
-			playlink = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&amp;url='+url2.replace('[','').replace(']','')+';name=wiztv'
+			playlink = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&amp;url='+url2.replace('[','').replace(']','')+';name=Wiztv'
 			if (Search_name).replace(' ','') in (name).replace(' ','').lower():
 				result.append(url[0])
 				try:
@@ -123,7 +123,10 @@ def Check_For_200_Response():
 	result = []
 	dp =  xbmcgui.DialogProgress()
 	HTML = requests.get('http://www.iptvultra.com/',headers=headers).text
-	match = re.compile('<span class="link"><a href="(.+?)">(.+?)</a>').findall(HTML)
+#	match = re.compile('<span class="link"><a href="(.+?)">(.+?)</a>').findall(HTML)
+#wizmod, check only Us UK Sky lists
+#	match = re.compile('<span class="link"><a href="(.+?)">(U|u|Un.+?)</a>').findall(HTML)
+	match = re.compile('<span class="link"><a href="(.+?)">(S.+?|Un.+?|US.+?)</a>').findall(HTML)
 	for url, name in match:
 		item.append(url[0])
 		items = len(item)
@@ -150,15 +153,17 @@ def Check_For_200_Response():
 					pass
 				if '200' in str(r.status_code):
 					result.append(url[0])
-					playlink = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&amp;url='+final_url+';name=wiztv'
+					playlink = 'plugin://plugin.video.f4mTester/?streamtype=TSDOWNLOADER&amp;url='+final_url+';name='+name+''
 					if not os.path.exists(Addon_data):
 						os.makedirs(Addon_data)
 					if not os.path.exists(Stream_file):
 						print_text_file = open(Stream_file,"w")
 						print_text_file.write('<NAME=>'+name+'</NAME><URL=>'+playlink+'</URL>\n')
+#						print_text_file.write('<item><title>'+name+'</title><link>'+playlink+'</link></item>\n')
 					else:
 						print_text_file = open(Stream_file,"a")
 						print_text_file.write('<NAME=>'+name+'</NAME><URL=>'+playlink+'</URL>\n')
+#						print_text_file.write('<item><title>'+name+'</title><link>'+playlink+'</link></item>\n')
 			except:
 				pass
 				
