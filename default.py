@@ -32,44 +32,6 @@ Dialog = xbmcgui.Dialog()
 addons = xbmc.translatePath('special://home/addons/')
 ADDON = xbmcaddon.Addon(id=addon_id)
 import os, shutil, xbmcgui
-def check_for_nobs():
-	for root, dirs, file in os.walk(addons):
-		for dir in dirs:
-			if 'plugin.program.anonymouswizard' in dir.lower():
-				checker(dir)
-			elif 'plugin.video.anonymous' in dir.lower():
-				checker(dir)
-			elif 'plugin.video.wargames' in dir.lower():
-				checker(dir)
-			elif 'script.module.wargames' in dir.lower():
-				checker(dir)
-			elif 'script.wargames.artwork' in dir.lower():
-				checker(dir)
-			elif 'script.wargames.metadata' in dir.lower():
-				checker(dir)
-			
-			
-def checker(dir):
-	if ADDON.getSetting('Delete')=='true':
-		delete_stuff(dir)
-	else:
-		Dialog.ok('Something has to go','A addon has been found that is leeching content','your next choice is up to you','if you cancel '+addon_id+' will be removed')
-		choices = ['Remove '+dir,'Remove '+addon_id,'Remove both']
-		choice = xbmcgui.Dialog().select('What is going to be removed?', choices)
-		if choice==0:
-			delete_stuff(dir)
-		elif choice==1:
-			delete_stuff(addon_id)
-		elif choice==2:
-			delete_stuff(dir)
-			delete_stuff(addon_id)
-		else:
-			delete_stuff(addon_id)
-						
-def delete_stuff(dir):
-	path = addons + dir
-	shutil.rmtree(path) 
-
 
 ADDON_PATH = xbmc.translatePath('special://home/addons/plugin.video.wiztv/')
 ICON = ADDON_PATH + 'icon.png'
@@ -87,7 +49,7 @@ BRETTUS_ICON = base_icons + 'brettus_anime.png'
 OBLIVION_ICON = base_icons + 'oblivion.png'
 TIGEN_ICON = base_icons + 'Tigen.png'
 COLD_ICON = base_icons + 'Cold.png'
-BAMF_ICON = base_icons + 'BAMF.png'
+wiztv_ICON = base_icons + 'wiztv.png'
 RENEGADES_ICON = base_icons + 'renegades.png'
 QUICK_ICON = base_icons + 'quick.png'
 RAY_ICON = base_icons + 'raysraver.png'
@@ -103,51 +65,60 @@ XMAS_PIC = base_icons + 'xmas_image.jpg'
 XMAS_IMAGE = 'http://iconshow.me/media/images/xmas/christmas-icon7/9/glass-ball-256.png'
 
 def Main_Menu():
-    check_for_nobs()
-    if not os.path.exists(INTRO_VID_TEMP):
-        if ADDON.getSetting('Intro_Vid')=='true':
-            xbmc.Player().play(INTRO_VID, xbmcgui.ListItem('You have been updated'))
-            os.makedirs(INTRO_VID_TEMP)
+    process.Menu('wiztv IPTV','',1132,wiztv_ICON,FANART,'','')
+    process.Menu('Check IPTV Lists','',23,'','','','')
+    process.Menu('Shadownet','',20,'','','','')
+    process.Menu('TVGuide.co.uk - UK Channels only', '', 2204, '', '', '', '')
+    process.Menu('---------------------------------------','',4,ORIGIN_ICON,FANART,'','')
+
+    process.Menu('Search','',1500,base_icons + 'search.png',FANART,'','')
+#    check_for_nobs()
+#    if not os.path.exists(INTRO_VID_TEMP):
+#        if ADDON.getSetting('Intro_Vid')=='true':
+#            xbmc.Player().play(INTRO_VID, xbmcgui.ListItem('You have been updated'))
+#            os.makedirs(INTRO_VID_TEMP)
     process.Menu('Big Bag \'O\' Tricks','',13,'',FANART,'','')
     if ADDON.getSetting('Origin')=='true':
         process.Menu('Origin','',4,ORIGIN_ICON,FANART,'','')
-    if ADDON.getSetting('Pandoras_Box')=='true':
-        process.Menu('Pandora\'s Box','',900,PANDORA_ICON,FANART,'','')
+#    if ADDON.getSetting('Pandoras_Box')=='true':
+#        process.Menu('Pandora\'s Box','',900,PANDORA_ICON,FANART,'','')
     if ADDON.getSetting('Pyramid')=='true':
         process.Menu('Pyramid','',1100,RAIDER_ICON,FANART,'','')
-    if ADDON.getSetting('Freeview')=='true':
-        process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
-    if ADDON.getSetting('Brettus_Anime')=='true':
-        process.Menu('Brettus Anime','',1600,BRETTUS_ICON,FANART,'','')
-    if ADDON.getSetting('Oblivion')=='true':
-        process.Menu('Oblivion IPTV','',1129,OBLIVION_ICON,FANART,'','')
-    if ADDON.getSetting("Tigen's_World")=='true':
-        process.Menu('Tigen\'s World','',1143,TIGEN_ICON,FANART,'','')
-    if ADDON.getSetting('Cold_As_Ice')=='true':
-        process.Menu('Cold As Ice','',1800,COLD_ICON,FANART,'','')
-    if ADDON.getSetting('Supremacy')=='true':
-        process.Menu('Supremacy','',1131,'http://www.stephen-builds.co.uk/wizard/icon.png',FANART,'','')
-    if ADDON.getSetting('Renegades')=='true':
-        process.Menu('Renegades Darts','',2150,RENEGADES_ICON,FANART,'','')
-    if ADDON.getSetting('Just_For_Him')=='true':
-        process.Menu('Just For Him','',1400,NINJA_ICON,FANART,'','')
-    if ADDON.getSetting('BAMF')=='true':
-        process.Menu('BAMF IPTV','',1132,BAMF_ICON,FANART,'','')
-    if ADDON.getSetting('Quicksilver')=='true':
-        process.Menu('Quicksilver Music','',1133,QUICK_ICON,'','','')
-    if ADDON.getSetting('Rays_Ravers')=='true':
-        process.Menu('Rays Ravers','',2250,RAY_ICON,'','','')
-    if ADDON.getSetting('Silent_Hunter')=='true':
-        process.Menu('Silent Hunter','',1134,SILENT_ICON,'','','')
-    if ADDON.getSetting('Dojo')=='true':
-        process.Menu('Dojo Streams','http://herovision.x10host.com/dojo/main.php',2300,DOJO_ICON,'','','')
-    if ADDON.getSetting('Cerberus')=='true':
-        process.Menu('Cerberus','http://roguemedia.x10.mx/reaper/mainmenu.php',2301,REAPER_ICON,'','','')
-    if ADDON.getSetting('Ultra')=='true':
-        process.Menu('Ultra IPTV','',1145,ULTRA_ICON,'','','')
-    if ADDON.getSetting('Fido')=='true':
-        process.Menu('Fido','',1146,FIDO_ICON,'','','')
-    process.setView('movies', 'MAIN')
+#    if ADDON.getSetting('Freeview')=='true':
+#        process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
+#    if ADDON.getSetting('Brettus_Anime')=='true':
+#        process.Menu('Brettus Anime','',1600,BRETTUS_ICON,FANART,'','')
+#    if ADDON.getSetting('Oblivion')=='true':
+#        process.Menu('Oblivion IPTV','',1129,OBLIVION_ICON,FANART,'','')
+#    if ADDON.getSetting("Tigen's_World")=='true':
+#        process.Menu('Tigen\'s World','',1143,TIGEN_ICON,FANART,'','')
+#    if ADDON.getSetting('Cold_As_Ice')=='true':
+#        process.Menu('Cold As Ice','',1800,COLD_ICON,FANART,'','')
+#    if ADDON.getSetting('Supremacy')=='true':
+#        process.Menu('Supremacy','',1131,'http://www.stephen-builds.co.uk/wizard/icon.png',FANART,'','')
+#    if ADDON.getSetting('Renegades')=='true':
+#        process.Menu('Renegades Darts','',2150,RENEGADES_ICON,FANART,'','')
+#    if ADDON.getSetting('Just_For_Him')=='true':
+#        process.Menu('Just For Him','',1400,NINJA_ICON,FANART,'','')
+#    if ADDON.getSetting('wiztv')=='true':
+#        process.Menu('wiztv IPTV','',1132,wiztv_ICON,FANART,'','')
+#    if ADDON.getSetting('Quicksilver')=='true':
+#        process.Menu('Quicksilver Music','',1133,QUICK_ICON,'','','')
+#    if ADDON.getSetting('Rays_Ravers')=='true':
+#        process.Menu('Rays Ravers','',2250,RAY_ICON,'','','')
+#    if ADDON.getSetting('Silent_Hunter')=='true':
+#        process.Menu('Silent Hunter','',1134,SILENT_ICON,'','','')
+#    if ADDON.getSetting('Dojo')=='true':
+#        process.Menu('Dojo Streams','http://herovision.x10host.com/dojo/main.php',2300,DOJO_ICON,'','','')
+#    if ADDON.getSetting('Cerberus')=='true':
+#        process.Menu('Cerberus','http://roguemedia.x10.mx/reaper/mainmenu.php',2301,REAPER_ICON,'','','')
+#    if ADDON.getSetting('Ultra')=='true':
+#        process.Menu('Ultra IPTV','',1145,ULTRA_ICON,'','','')
+#    if ADDON.getSetting('Fido')=='true':
+#        process.Menu('Fido','',1146,FIDO_ICON,'','','')
+#   process.setView('movies', 'MAIN')
+#
+##############################'''
 
 def bagotricks():
     if ADDON.getSetting('TV_Guide')=='true':
@@ -246,8 +217,9 @@ def send_to_search(name,extra):
 
 
 def Origin_Main():
-#    process.Menu('Movies','',200,ORIGIN_ICON,ORIGIN_FANART,'','')
- #   process.Menu('TV Shows','',300,ORIGIN_ICON,ORIGIN_FANART,'','')
+#   process.Menu('Movies','',200,ORIGIN_ICON,ORIGIN_FANART,'','')
+    process.Menu('M3u8 Lists','',23,'','','','')
+#   process.Menu('TV Shows','',300,ORIGIN_ICON,ORIGIN_FANART,'','')
     process.Menu('Live TV','',19,ORIGIN_ICON,ORIGIN_FANART,'','')
     process.Menu('Index Google Search','',2350,ORIGIN_ICON,ORIGIN_FANART,'','')
 #    process.Menu('Comedy','',100,ORIGIN_ICON,ORIGIN_FANART,'','')
