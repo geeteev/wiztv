@@ -23,7 +23,8 @@
   </extension>
   <extension point="xbmc.addon.metadata">
 	<summary lang="en">wiztv</summary>
-	<description lang="en">Based entirely on Sanctuary, all credit to the developers of that and all the addons inside it. Intention is to remove most of the Sanctuary content and develop this into a mainly IPTV list and search addon</description>
+	<description lang="en">Based entirely on Sanctuary, all credit to the developers of that and all the addons inside it. 
+			Intention is to remove most of the Sanctuary content and develop this into a mainly IPTV list and search addon</description>
 	<disclaimer lang="en">The author neither hosts or stores any content, the author has no affiliation with content hosts</disclaimer>
 	<platform>all</platform>
   </extension>
