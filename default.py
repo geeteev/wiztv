@@ -38,7 +38,7 @@ ICON = ADDON_PATH + 'icon.png'
 ADDON = xbmcaddon.Addon(id=addon_id)
 FANART = ADDON_PATH + 'fanart.jpg'
 Adult_Pass = ADDON.getSetting('Adult')
-base_icons = 'http://herovision.x10host.com/freeview/'
+base_icons = 'http://geetee.site/wizchannels/images/'
 ORIGIN_ICON = base_icons + 'origin.png'
 ORIGIN_FANART = base_icons + 'origin.jpg'
 PANDORA_ICON = 'https://s32.postimg.org/ov9s6ipf9/icon.png'
@@ -70,7 +70,8 @@ def Main_Menu():
     process.Menu('Shadownet','',20,'','','','')
     process.Menu('TVGuide.co.uk - UK Channels only', '', 2204, '', '', '', '')
     process.Menu('---------------------------------------','',4,ORIGIN_ICON,FANART,'','')
-
+    process.Menu('Comedy','',100,ORIGIN_ICON,ORIGIN_FANART,'','')
+    process.Menu('Tv Shows-watchseries.ac','http://herovision.x10host.com/GetUpStandUp/TV_Shows.php',104,ICON,FANART,'','')
     process.Menu('Search','',1500,base_icons + 'search.png',FANART,'','')
 #    check_for_nobs()
 #    if not os.path.exists(INTRO_VID_TEMP):
@@ -84,8 +85,8 @@ def Main_Menu():
 #        process.Menu('Pandora\'s Box','',900,PANDORA_ICON,FANART,'','')
     if ADDON.getSetting('Pyramid')=='true':
         process.Menu('Pyramid','',1100,RAIDER_ICON,FANART,'','')
-#    if ADDON.getSetting('Freeview')=='true':
-#        process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
+    if ADDON.getSetting('Freeview')=='true':
+        process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
 #    if ADDON.getSetting('Brettus_Anime')=='true':
 #        process.Menu('Brettus Anime','',1600,BRETTUS_ICON,FANART,'','')
 #    if ADDON.getSetting('Oblivion')=='true':
@@ -481,7 +482,7 @@ elif mode == 1100: from lib.pyramid import pyramid;pyramid.SKindex()
 elif mode == 1128: from lib.pyramid import pyramid;pyramid.SKindex_Joker()
 elif mode == 1129: from lib.pyramid import pyramid;pyramid.SKindex_Oblivion()
 elif mode == 1131: from lib.pyramid import pyramid;pyramid.SKindex_Supremacy()
-elif mode == 1132: from lib.pyramid import pyramid;pyramid.SKindex_BAMF()
+elif mode == 1132: from lib.pyramid import pyramid;pyramid.SKindex_WIZtv()
 elif mode == 1133: from lib.pyramid import pyramid;pyramid.SKindex_Quicksilver()
 elif mode == 1134: from lib.pyramid import pyramid;pyramid.SKindex_Silent()
 elif mode == 1101:from lib.pyramid import pyramid;pyramid.getData(url,fanart);xbmcplugin.endOfDirectory(int(sys.argv[1]))
