@@ -293,8 +293,8 @@ def Live_TV(Search_name):
         Search_name = 'Watch'
     dp.create('Checking for streams - ' + Search_name)
 #    Oblivion_list = ['FreeSports.xml','FreeTesting.xml','Server1.m3u','Server2.m3u','Kid.xml']
-
-    WIZtv_List = ['https://pastebin.com/raw/vQZZFeES','https://pastebin.com/raw/AcKSzic5',]
+    WIZtv_List = ['https://pastebin.com/raw/RKnSmnZi','https://pastebin.com/raw/RKnSmnZi',]
+#searches entire list, real slow    WIZtv_List = ['https://pastebin.com/raw/vQZZFeES','https://pastebin.com/raw/AcKSzic5',]
 
 #    Ultra_List = ['http://ultratv.net16.net/iptvserver/ukiptv1.xml','http://ultratv.net16.net/iptvserver/usaiptv1.xml',
 #    'http://ultratv.net16.net/iptvserver/canadaiptv1.xml','http://ultratv.net16.net/iptvserver/indiaiptv1.xml']

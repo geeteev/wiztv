@@ -41,82 +41,36 @@ Adult_Pass = ADDON.getSetting('Adult')
 base_icons = 'http://geetee.site/wizchannels/images/'
 ORIGIN_ICON = base_icons + 'origin.png'
 ORIGIN_FANART = base_icons + 'origin.jpg'
-PANDORA_ICON = 'https://s32.postimg.org/ov9s6ipf9/icon.png'
+
 RAIDER_ICON = base_icons + 'pyramid.png'
 FREEVIEW_ICON = base_icons + 'freeview.png'
-NINJA_ICON = base_icons + 'ninja2.png'
-BRETTUS_ICON = base_icons + 'brettus_anime.png'
+
 OBLIVION_ICON = base_icons + 'oblivion.png'
-TIGEN_ICON = base_icons + 'Tigen.png'
-COLD_ICON = base_icons + 'Cold.png'
+
 wiztv_ICON = base_icons + 'wiztv.png'
-RENEGADES_ICON = base_icons + 'renegades.png'
+
 QUICK_ICON = base_icons + 'quick.png'
-RAY_ICON = base_icons + 'raysraver.png'
-SILENT_ICON = base_icons + 'silent.png'
-REAPER_ICON = base_icons + 'reaper.png'
-DOJO_ICON = base_icons + 'dojo.png'
+
 ULTRA_ICON = base_icons + 'Ultra.png'
-FIDO_ICON = base_icons + 'fido.png'
-INTRO_VID = base_icons + 'Intro.mp4'
-INTRO_VID_TEMP = xbmc.translatePath('special://home/addons/plugin.video.wiztv/DELETE_ME')
-XMAS_SONG = base_icons + 'xmas_intro.mp3'
-XMAS_PIC = base_icons + 'xmas_image.jpg'
-XMAS_IMAGE = 'http://iconshow.me/media/images/xmas/christmas-icon7/9/glass-ball-256.png'
 
 def Main_Menu():
     process.Menu('wiztv IPTV','',1132,wiztv_ICON,FANART,'','')
     process.Menu('Check IPTV Lists','',23,'','','','')
     process.Menu('Shadownet','',20,'','','','')
     process.Menu('TVGuide.co.uk - UK Channels only', '', 2204, '', '', '', '')
-    process.Menu('---------------------------------------','',4,ORIGIN_ICON,FANART,'','')
-    process.Menu('Comedy','',100,ORIGIN_ICON,ORIGIN_FANART,'','')
     process.Menu('Tv Shows-watchseries.ac','http://herovision.x10host.com/GetUpStandUp/TV_Shows.php',104,ICON,FANART,'','')
+    process.Menu('Comedy','',100,ORIGIN_ICON,ORIGIN_FANART,'','')	
     process.Menu('Search','',1500,base_icons + 'search.png',FANART,'','')
-#    check_for_nobs()
-#    if not os.path.exists(INTRO_VID_TEMP):
-#        if ADDON.getSetting('Intro_Vid')=='true':
-#            xbmc.Player().play(INTRO_VID, xbmcgui.ListItem('You have been updated'))
-#            os.makedirs(INTRO_VID_TEMP)
-    process.Menu('Big Bag \'O\' Tricks','',13,'',FANART,'','')
-    if ADDON.getSetting('Origin')=='true':
-        process.Menu('Origin','',4,ORIGIN_ICON,FANART,'','')
-#    if ADDON.getSetting('Pandoras_Box')=='true':
-#        process.Menu('Pandora\'s Box','',900,PANDORA_ICON,FANART,'','')
-    if ADDON.getSetting('Pyramid')=='true':
-        process.Menu('Pyramid','',1100,RAIDER_ICON,FANART,'','')
     if ADDON.getSetting('Freeview')=='true':
-        process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
-#    if ADDON.getSetting('Brettus_Anime')=='true':
-#        process.Menu('Brettus Anime','',1600,BRETTUS_ICON,FANART,'','')
-#    if ADDON.getSetting('Oblivion')=='true':
-#        process.Menu('Oblivion IPTV','',1129,OBLIVION_ICON,FANART,'','')
-#    if ADDON.getSetting("Tigen's_World")=='true':
-#        process.Menu('Tigen\'s World','',1143,TIGEN_ICON,FANART,'','')
-#    if ADDON.getSetting('Cold_As_Ice')=='true':
-#        process.Menu('Cold As Ice','',1800,COLD_ICON,FANART,'','')
-#    if ADDON.getSetting('Supremacy')=='true':
-#        process.Menu('Supremacy','',1131,'http://www.stephen-builds.co.uk/wizard/icon.png',FANART,'','')
-#    if ADDON.getSetting('Renegades')=='true':
-#        process.Menu('Renegades Darts','',2150,RENEGADES_ICON,FANART,'','')
-#    if ADDON.getSetting('Just_For_Him')=='true':
-#        process.Menu('Just For Him','',1400,NINJA_ICON,FANART,'','')
-#    if ADDON.getSetting('wiztv')=='true':
-#        process.Menu('wiztv IPTV','',1132,wiztv_ICON,FANART,'','')
-#    if ADDON.getSetting('Quicksilver')=='true':
-#        process.Menu('Quicksilver Music','',1133,QUICK_ICON,'','','')
-#    if ADDON.getSetting('Rays_Ravers')=='true':
-#        process.Menu('Rays Ravers','',2250,RAY_ICON,'','','')
-#    if ADDON.getSetting('Silent_Hunter')=='true':
-#        process.Menu('Silent Hunter','',1134,SILENT_ICON,'','','')
-#    if ADDON.getSetting('Dojo')=='true':
-#        process.Menu('Dojo Streams','http://herovision.x10host.com/dojo/main.php',2300,DOJO_ICON,'','','')
-#    if ADDON.getSetting('Cerberus')=='true':
-#        process.Menu('Cerberus','http://roguemedia.x10.mx/reaper/mainmenu.php',2301,REAPER_ICON,'','','')
-#    if ADDON.getSetting('Ultra')=='true':
-#        process.Menu('Ultra IPTV','',1145,ULTRA_ICON,'','','')
-#    if ADDON.getSetting('Fido')=='true':
-#        process.Menu('Fido','',1146,FIDO_ICON,'','','')
+	process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
+	
+    process.Menu('---------------------------------------','',4,ORIGIN_ICON,FANART,'','')	
+
+    process.Menu('Big Bag \'O\' Tricks','',13,'',FANART,'','')
+    process.Menu('Origin','',4,ORIGIN_ICON,FANART,'','')
+#    process.Menu('Pyramid','',1100,RAIDER_ICON,FANART,'','')
+
+
 #   process.setView('movies', 'MAIN')
 #
 ##############################'''
@@ -128,6 +82,7 @@ def bagotricks():
         process.Menu('Today\'s Football','',1750,ICON,FANART,'','')
     if ADDON.getSetting('Latest_Episodes')=='true':
         process.Menu('Latest Episodes','',3,ICON,FANART,'','')
+		
     if ADDON.getSetting('Recent_Movies')=='true':
         process.Menu('Recent Movies','',5,ICON,FANART,'','')
     if ADDON.getSetting('Favourites')=='true':
@@ -135,35 +90,12 @@ def bagotricks():
     if ADDON.getSetting('Search')=='true':
         process.Menu('Search','',1500,base_icons + 'search.png',FANART,'','')
 	
-def DOJO_MAIN(url):
-    OPEN = process.OPEN_URL(url)
-    Regex = re.compile('<a href="(.+?)" target="_blank"><img src="(.+?)" style="max-width:200px;" /><description = "(.+?)" /><background = "(.+?)" </background></a><br><b>(.+?)</b>').findall(OPEN)
-    for url,icon,desc,fanart,name in Regex:
-        if 'php' in url:
-            process.Menu(name,url,2300,icon,fanart,desc,'')
-        else:
-            process.Play(name,url,906,icon,fanart,desc,'')
-
-    process.setView('tvshows', 'Media Info 3')			
-		
-def Reaper_Loop(url):
-    OPEN = process.OPEN_URL(url)
-    Regex = re.compile('<NAME>(.+?)</NAME><URL>(.+?)</URL><ICON>(.+?)</ICON><FANART>(.+?)</FANART><DESC>(.+?)</DESC>').findall(OPEN)
-    for name,url,icon,fanart,desc in Regex:
-        if 'Favourites' in name:
-            pass
-        elif 'Search' in name:
-            pass
-        elif 'php' in url:
-            process.Menu(name,url,2301,icon,fanart,desc,'')
-        else:
-            process.Play(name,url,906,icon,fanart,desc,'')
 
 
-def Latest_Episodes():
+'''def Latest_Episodes():
     process.Menu('Pandora Latest Episodes','http://genietvcunts.co.uk/PansBox/ORIGINS/recenttv.php',426,ICON,FANART,'','')
     process.Menu('TV Schedule','http://www.tvmaze.com/calendar',6,ICON,FANART,'','')
-
+'''
 def Recent_Movies():
     process.Menu('Pandora Recent Movies','http://genietvcunts.co.uk/PansBox/ORIGINS/recentmovies.php',426,ICON,FANART,'','')
     process.Menu('Pyramid Recent Movies','http://tombraiderbuilds.co.uk/addon/New%20Releaes/newreleases.txt',1101,ICON,FANART,'','')
