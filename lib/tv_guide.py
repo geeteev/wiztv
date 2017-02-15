@@ -14,7 +14,7 @@ time_now_number = str((int(Hour) * 60) + int(Minute))
 
 def TV_GUIDE_MENU():
     process.Menu('Telegraph TV Guide - [COLORred]UK Only[/COLOR]', '', 2201, '', '', '', '')
-    process.Menu('TVGuide.co.uk - [COLORred]UK Only[/COLOR]', '', 2204, '', '', '', '')
+    process.Menu('TVGuide.co.uk - [COLORred]UK[/COLOR]',TVGUIDE_ICON, 2204, '', '', '', '')
 
 
 

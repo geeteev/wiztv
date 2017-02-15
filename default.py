@@ -39,37 +39,37 @@ ADDON = xbmcaddon.Addon(id=addon_id)
 FANART = ADDON_PATH + 'fanart.jpg'
 Adult_Pass = ADDON.getSetting('Adult')
 base_icons = 'http://geetee.site/wizchannels/images/'
-ORIGIN_ICON = base_icons + 'origin.png'
-ORIGIN_FANART = base_icons + 'origin.jpg'
-
-RAIDER_ICON = base_icons + 'pyramid.png'
-FREEVIEW_ICON = base_icons + 'freeview.png'
-
-OBLIVION_ICON = base_icons + 'oblivion.png'
 
 wiztv_ICON = base_icons + 'wiztv.png'
+SHADOWNET_ICON = base_icons + 'shadownet.png'
+TVGUIDE_ICON = base_icons + 'tvguidecouk.png'
+WATCHSERIES_ICON = base_icons + 'watchseries.png'
+FREEVIEW_ICON = base_icons + 'filmon.png'
 
+
+ORIGIN_ICON = base_icons + 'origin.png'
+ORIGIN_FANART = base_icons + 'origin.jpg'
+RAIDER_ICON = base_icons + 'pyramid.png'
+OBLIVION_ICON = base_icons + 'oblivion.png'
 QUICK_ICON = base_icons + 'quick.png'
-
 ULTRA_ICON = base_icons + 'Ultra.png'
 
 def Main_Menu():
-    process.Menu('wiztv IPTV','',1132,wiztv_ICON,FANART,'','')
+    process.Menu('wiztv IPTV not working -removed pyramid for now','',1132,wiztv_ICON,FANART,'','')
     process.Menu('Check IPTV Lists','',23,'','','','')
-    process.Menu('Shadownet','',20,'','','','')
-    process.Menu('TVGuide.co.uk - UK Channels only', '', 2204, '', '', '', '')
-    process.Menu('Tv Shows-watchseries.ac','http://herovision.x10host.com/GetUpStandUp/TV_Shows.php',104,ICON,FANART,'','')
-    process.Menu('Comedy','',100,ORIGIN_ICON,ORIGIN_FANART,'','')	
+    process.Menu('Shadownet','',20,SHADOWNET_ICON,'','','')
+    process.Menu('TVGuide.co.uk - UK Channels only',TVGUIDE_ICON, 2204, '', '', '', '')
+    process.Menu('Tv Shows-watchseries.ac','http://herovision.x10host.com/GetUpStandUp/TV_Shows.php',104,WATCHSERIES_ICON,FANART,'','')
     process.Menu('Search','',1500,base_icons + 'search.png',FANART,'','')
     if ADDON.getSetting('Freeview')=='true':
-	process.Menu('FreeView - [COLORred]VPN required if you are outside UK[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
+	process.Menu('FilmOn [COLORred]...[/COLOR]','',1200,FREEVIEW_ICON,FANART,'','')
 	
     process.Menu('---------------------------------------','',4,ORIGIN_ICON,FANART,'','')	
 
-    process.Menu('Big Bag \'O\' Tricks','',13,'',FANART,'','')
-    process.Menu('Origin','',4,ORIGIN_ICON,FANART,'','')
+#    process.Menu('Big Bag \'O\' Tricks','',13,'',FANART,'','')
+#    process.Menu('Origin','',4,ORIGIN_ICON,FANART,'','')
 #    process.Menu('Pyramid','',1100,RAIDER_ICON,FANART,'','')
-
+#    process.Menu('Comedy','',100,ORIGIN_ICON,ORIGIN_FANART,'','')	
 
 #   process.setView('movies', 'MAIN')
 #
